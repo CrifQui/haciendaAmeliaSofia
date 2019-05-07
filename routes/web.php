@@ -12,20 +12,9 @@
 */
 
 //Route::get('/', 'PagesController@home');
-Route::get('/', function(){
-    $links = [
-        '/'=>'Inicio',
-        '/aboutUs'=>'Nosotros',
-        '/services'=>'Servicios',
-        '/gallery'=>'Galeria',
-        '/FAQ'=>'FAQ',
-
-    ];
-    return view('pages.home',[
-        'links'=>$links,
-    ]);
-Route::get('/services',function(){
-    return view('pages.services');
-});
-
-});
+Route::get('/', 'PagesController@home');
+Route::get('/aboutUs','PagesController@aboutUs');
+Route::get('/services','PagesController@services');
+Route::get('/gallery','PagesController@gallery');
+Route::resource('/reserve','ReservationsController');
+Auth::routes();
